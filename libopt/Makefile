@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-g -O3 -ansi -Wall -Wextra -pedantic -fPIC
 HEADERS=opt.h
 OBJS=opt.o parse.o
-LDFLAGS=-I. -lopt
+LDFLAGS=-I. -L. -lopt
 
 libopt.so: $(OBJS)
 	$(CC) -shared $(CFLAGS) $(OBJS) -o libopt.so
@@ -18,7 +18,7 @@ parse.o: parse.c opt.h
 
 examples: ex-simple
 
-ex-%: examples/%.c
+ex-%: libopt.so examples/%.c
 	$(CC) $(CFLAGS) examples/$*.c $(LDFLAGS) -o ex-$*
 
 clean:

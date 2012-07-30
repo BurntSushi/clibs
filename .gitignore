@@ -1,3 +1,6 @@
 .*.swp
 *.o
 ex-*
+*.so
+include/
+lib/

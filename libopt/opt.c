@@ -22,6 +22,10 @@ opt_config_init()
     conf->flags = NULL;
     conf->parsed = false;
     conf->usage = opt_config_print_defaults;
+    conf->help = false;
+
+    opt_flag_bool(conf, &conf->help, "help",
+                  "Shows this usage information.");
 
     return conf;
 }

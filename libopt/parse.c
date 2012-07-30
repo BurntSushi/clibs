@@ -115,6 +115,12 @@ opt_config_parse(struct opt_config *conf, int argc, char **argv)
             }
         }
 
+    /* If 'help' has been found, echo usage and exit. */
+    if (conf->help) {
+        opt_config_print_usage(conf);
+        exit(1);
+    }
+
     return args;
 }
 
