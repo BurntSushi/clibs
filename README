@@ -23,3 +23,7 @@ to expect me to use it since it's so ubiquitous. I found this distasteful,
 particularly as someone who has been spoiled with Python's 'argparse' module, 
 and Go's 'flag' package.)
 
+`libopt` can be used by compiling with `-lopt`, assuming that 'opt.h' and
+'libopt.so' are in your C_INCLUDE_PATH and LIBRARY_PATH, respectively.
+
+
