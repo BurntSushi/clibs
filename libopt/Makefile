@@ -16,7 +16,7 @@ opt.o: opt.c opt.h
 parse.o: parse.c opt.h
 	$(CC) $(CFLAGS) -c parse.c -o parse.o
 
-examples: ex-simple
+examples: ex-contrived ex-simple
 
 ex-%: libopt.so examples/%.c
 	$(CC) $(CFLAGS) examples/$*.c $(LDFLAGS) -o ex-$*
