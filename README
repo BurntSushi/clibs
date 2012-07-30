@@ -1,0 +1,25 @@
+clibs
+=====
+This is a collection of C libraries that I find frequent use for.
+
+libds
+=====
+Contains implementations of commonly used data structures: hashmap, vector, 
+linked list and a thread-safe queue that can be used in a 
+multi-producer/multi-consumer algorithm.
+
+The thread-safe queue is greatly inspired by the semantics of Go channels, 
+although they are not emulated precisely. (Namely, there is no notion of an 
+unbuffered channel, and there is no 'select' statement. I'm sure there are 
+other differences, too.)
+
+libopt
+======
+Contains a sane implementation of command line argument parsing. It is greatly 
+inspired by Go's standard library 'flag' package.
+
+(I really couldn't believe how horrendous 'getopt' was, and the Internet seems 
+to expect me to use it since it's so ubiquitous. I found this distasteful, 
+particularly as someone who has been spoiled with Python's 'argparse' module, 
+and Go's 'flag' package.)
+
