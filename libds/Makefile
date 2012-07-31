@@ -25,9 +25,16 @@ vector.o: vector.c vector.h
 examples: ex-hashmaps ex-vectors ex-lists ex-queue
 
 ex-hashmaps: libds.so ds.h examples/hashmaps.o
+	$(CC) $(LDFLAGS) examples/hashmaps.o $(LDLIBS) -o ex-hashmaps
+
 ex-vectors: libds.so ds.h examples/vectors.o
+	$(CC) $(LDFLAGS) examples/vectors.o $(LDLIBS) -o ex-vectors
+
 ex-lists: libds.so ds.h examples/lists.o
+	$(CC) $(LDFLAGS) examples/lists.o $(LDLIBS) -o ex-lists
+
 ex-queue: libds.so ds.h examples/queue.o
+	$(CC) $(LDFLAGS) examples/queue.o $(LDLIBS) -o ex-queue
 
 clean:
 	rm -f ex-{hashmaps,vectors,lists,queue}

@@ -18,7 +18,8 @@ int main(int argc, char **argv)
     for (i = 0; i < args->nargs; i++)
         printf("\targ %d: %s\n", i, args->args[i]);
 
-    opt_config_free(conf, args);
+    opt_config_free(conf);
+    opt_args_free(args);
 
     return 0;
 }

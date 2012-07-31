@@ -61,7 +61,8 @@ int main(int argc, char **argv)
         printf("arg %d: %s\n", i, args->args[i]);
 
     /* Make valgrind happy. */
-    opt_config_free(conf, args);
+    opt_config_free(conf);
+    opt_args_free(args);
 
     return 0;
 }

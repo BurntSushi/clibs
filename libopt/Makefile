@@ -18,7 +18,10 @@ parse.o: parse.c opt.h
 examples: ex-contrived ex-simple
 
 ex-contrived: libopt.so opt.h examples/contrived.o
+	$(CC) $(LDFLAGS) examples/contrived.o $(LDLIBS) -o ex-contrived
+
 ex-simple: libopt.so opt.h examples/simple.o
+	$(CC) $(LDFLAGS) examples/simple.o $(LDLIBS) -o ex-simple
 
 clean:
 	rm -f ex-*
