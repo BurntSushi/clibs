@@ -32,5 +32,5 @@ ex-queue: libds.so ds.h examples/queue.o
 clean:
 	rm -f ex-{hashmaps,vectors,lists,queue}
 	rm -f libds.{a,so}
-	rm -f *.o
+	rm -f *.o examples/*.o
 

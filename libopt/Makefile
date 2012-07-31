@@ -23,5 +23,5 @@ ex-simple: libopt.so opt.h examples/simple.o
 clean:
 	rm -f ex-*
 	rm -f libopt.{a,so}
-	rm -f *.o
+	rm -f *.o examples/*.o
 

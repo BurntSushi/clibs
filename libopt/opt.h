@@ -46,7 +46,10 @@ struct opt_config *
 opt_config_init();
 
 void
-opt_config_free(struct opt_config *conf, struct opt_args *args);
+opt_config_free(struct opt_config *conf);
+
+void
+opt_args_free(struct opt_args *args);
 
 /* Call this after all flags have been specified. It will parse the arguments
  * passed in through 'main' ('argc' and 'argv'), and return all non-flag
