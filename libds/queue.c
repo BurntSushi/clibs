@@ -1,7 +1,40 @@
+#include <assert.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "queue.h"
+
+
+struct DSQueue {
+    /* An array of elements in the queue. */
+    void **buf;
+
+    /* The position of the first element in the queue. */
+    uint32_t pos;
+
+    /* The number of items currently in the queue.
+     * When `length` = 0, ds_queue_pop will block.
+     * When `length` = `capacity`, ds_queue_push will block. */
+    uint32_t length;
+
+    /* The total number of allowable items in the queue */
+    uint32_t capacity;
+
+    /* When true, the queue has been closed. A run-time error will occur
+     * if a value is sent to a closed queue. */
+    bool closed;
+
+    /* Guards the modification of `length` (a condition variable) and `pos`. */
+    pthread_mutex_t mutate;
+
+    /* A condition variable that is pinged whenever `length` has changed or
+     * when the queue has been closed. */
+    pthread_cond_t cond_length;
+};
+
 
 struct DSQueue *
 ds_queue_create(uint32_t buffer_capacity)
