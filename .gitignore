@@ -4,3 +4,4 @@ ex-*
 *.so
 include/
 lib/
+ds.h

@@ -1,4 +1,10 @@
-all: lib/libds.so lib/libopt.so include/ds.h include/opt.h
+all: lib include lib/libds.so lib/libopt.so include/ds.h include/opt.h
+
+lib:
+	mkdir -p lib
+
+include:
+	mkdir -p include
 
 lib/libds.so: libds/libds.so
 	cp libds/libds.so lib/libds.so
@@ -15,7 +21,7 @@ libopt/libopt.so:
 include/ds.h: libds/ds.h
 	cp libds/ds.h include/
 
-libopt/ds.h:
+libds/ds.h:
 	(cd libds && make ds.h)
 
 include/opt.h: libopt/opt.h
