@@ -1,7 +1,12 @@
+#include <assert.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "queue.h"
+
 
 struct DSQueue {
     /* An array of elements in the queue. */

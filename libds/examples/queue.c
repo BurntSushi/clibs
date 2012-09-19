@@ -1,5 +1,8 @@
+#include <assert.h>
 #include <pthread.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <unistd.h>
 

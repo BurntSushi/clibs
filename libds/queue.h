@@ -1,17 +1,13 @@
 #ifndef __LIBDS_QUEUE_H__
 #define __LIBDS_QUEUE_H__
 
+#include <stdint.h>
+
 /*
  * DSQueue is a thread-safe queue that has no limitation on the number of
  * threads that can call ds_queue_push and ds_queue_pop simultaneously.
  * That is, it supports a multiple producer and multiple consumer model.
  */
-
-#include <assert.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <stdbool.h>
-#include <stdint.h>
 
 /* DSQueue implements a thread-safe queue using a fairly standard
  * circular buffer. */
