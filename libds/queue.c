@@ -16,8 +16,8 @@ struct DSQueue {
     uint32_t pos;
 
     /* The number of items currently in the queue.
-     * When `length` = 0, ds_queue_pop will block.
-     * When `length` = `capacity`, ds_queue_push will block. */
+     * When `length` = 0, ds_queue_get will block.
+     * When `length` = `capacity`, ds_queue_put will block. */
     uint32_t length;
 
     /* The total number of allowable items in the queue */
@@ -110,7 +110,7 @@ ds_queue_close(struct DSQueue *queue)
 }
 
 void
-ds_queue_push(struct DSQueue *queue, void *item)
+ds_queue_put(struct DSQueue *queue, void *item)
 {
     pthread_mutex_lock(&queue->mutate);
     assert(!queue->closed);
@@ -129,7 +129,7 @@ ds_queue_push(struct DSQueue *queue, void *item)
 }
 
 void *
-ds_queue_pop(struct DSQueue *queue)
+ds_queue_get(struct DSQueue *queue)
 {
     void *item;
 

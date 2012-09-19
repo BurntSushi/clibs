@@ -143,7 +143,7 @@ int main(void)
     /* Read all values in `results_queue`, and sum them up to get the total
      * number of consumed items. */
     result_sum = 0;
-    while (NULL != (result = (int*) ds_queue_pop(results_queue))) {
+    while (NULL != (result = (int*) ds_queue_get(results_queue))) {
         result_sum += *result;
         free(result);
     }
@@ -173,7 +173,7 @@ producer(void *data)
     job = (struct job *) data;
     for (i = 0; i < JOBS / num_producers; i++) {
         assert(item = malloc(sizeof(*item)));
-        ds_queue_push(job->job_queue, item);
+        ds_queue_put(job->job_queue, item);
         cnt++;
     }
 
@@ -193,7 +193,7 @@ consumer(void *data)
     *cnt = 0;
 
     job = (struct job *) data;
-    while (NULL != (item = (int*) ds_queue_pop(job->job_queue))) {
+    while (NULL != (item = (int*) ds_queue_get(job->job_queue))) {
         (*cnt)++;
         total_primes += calc_primes(1000);
         free(item);
@@ -201,7 +201,7 @@ consumer(void *data)
 
     printf("Thread %s consumed %d items (%d primes).\n",
             job->id, *cnt, total_primes);
-    ds_queue_push(job->results_queue, (void*) cnt);
+    ds_queue_put(job->results_queue, (void*) cnt);
     return NULL;
 }
 
