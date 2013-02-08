@@ -12,7 +12,7 @@ libds.a: $(OBJS)
 	ar rcs libds.a $(OBJS)
 
 ds.h: $(HEADERS)
-	cat $(HEADERS) > ds.h
+	cat $(HEADERS) | sed 's/#include "vector.h"//' > ds.h
 
 hashmap.o: hashmap.c hashmap.h vector.h
 
